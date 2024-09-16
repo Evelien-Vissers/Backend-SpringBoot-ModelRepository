@@ -19,12 +19,12 @@ public class Television {
     private String brand;
     private String name;
     private Double price;
-    private LocalDate purchaseDate;
-    private LocalDate saleDate;
-    private Double availableSize;
-    private Integer refreshRate;
-    private String screenType;
-    private String screenQuality;
+    private LocalDate purchaseDate; //Datum voor inkoop
+    private LocalDate saleDate; //Datum voor verkoop
+    private Double availableSize; //Mogelijk een enum als je dit als optie wilt
+    private Integer refreshRate; //Mogelijk een enum als je dit als optie wilt
+    private String screenType; //Enum voor schermtype
+    private String screenQuality; //Enum voor schermkwaliteit
     private Boolean smartTv;
     private Boolean wifi;
     private Boolean voiceControl;
@@ -33,6 +33,9 @@ public class Television {
     private Boolean ambilight;
     private Integer originalStock;
     private Integer sold;
+
+    //Data worden opgeslagen als DATE of TIMESTAMP types in de database
+    //Enums worden opgeslagen als VARCHAR of ENUM type in de database
 
     //Default constructor - dit is handig wanneer je een object wilt aanmaken zonder onmiddellijk waarden toe te wijzen aan de velden.
     public Television() {
