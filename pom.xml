@@ -49,7 +49,6 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.6.0</version> <!-- Zorg ervoor dat dit de laatste versie is -->
 		</dependency>
 	</dependencies>
 

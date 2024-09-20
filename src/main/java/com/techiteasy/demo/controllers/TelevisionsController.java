@@ -16,7 +16,7 @@ import java.util.*;
 public class TelevisionsController {
 
     //Deze mock is een tijdelijke oplossing om data in het geheugen op te slaan, zodat de functionaliteit van de controller getest kan worden zonder een database of externe opslag te gebruiken.
-    private final List<String> televisionDataBase = new ArrayList<>(Arrays.asList("Samsung", "Sony", "LG")); //Ik heb dit 'final' gemaakt om duidelijk te maken dat de referentie naar het Map-object onveranderlijk is na initiele toewijzing (oa voor betere leesbaarheid van de code en het evt. per ongeluk her-toewijzen van het veld elders in de code).
+    //private final List<String> televisionDataBase = new ArrayList<>(Arrays.asList("Samsung", "Sony", "LG")); //Ik heb dit 'final' gemaakt om duidelijk te maken dat de referentie naar het Map-object onveranderlijk is na initiele toewijzing (oa voor betere leesbaarheid van de code en het evt. per ongeluk her-toewijzen van het veld elders in de code).
 
     //Stap 3: Voeg requests toe met ResponseEntity
     // GET - request voor alle televisies

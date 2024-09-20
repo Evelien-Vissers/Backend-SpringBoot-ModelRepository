@@ -14,7 +14,8 @@ public class Television {
     @Id //Dit attribuut geeft aan dat het veld 'id' de primaire sleutel is.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Deze annotatie zorgt ervoor dat de waarde van 'id' automatisch wordt gegenereerd door de database wanneer een nieuwe rij wordt ingevoegd
-    private long id;
+    private Long id;
+    //Notitie MR: het is beter om het type "Long" ipv "long" te gebruiken. De voorkeur gaat altijd uit naar de wrapper klassen (= hoofdletter variant)
     private String type;
     private String brand;
     private String name;
