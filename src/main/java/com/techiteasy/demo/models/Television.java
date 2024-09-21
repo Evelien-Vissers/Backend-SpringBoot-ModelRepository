@@ -42,13 +42,14 @@ public class Television {
     public Television() {
 
     }
-
     //Constructor met parameters - initialiseert specifieke waarden
     public Television(String type, String brand, String name, Double price, Double availableSize, Integer refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambilight, Integer originalStock, Integer sold) {
         this.type = type;
         this.brand = brand;
         this.name = name;
         this.price = price;
+        this.purchaseDate = purchaseDate;
+        this.saleDate = saleDate;
         this.availableSize = availableSize;
         this.refreshRate = refreshRate;
         this.screenType = screenType;
@@ -104,6 +105,21 @@ public class Television {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
+    }
+    public void setPurchaseDate(LocalDate purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public LocalDate getSaleDate() {
+        return saleDate;
+    }
+
+    public void setSaleDate() {
+        this.saleDate = saleDate;
     }
 
     public Double getAvailableSize() {
