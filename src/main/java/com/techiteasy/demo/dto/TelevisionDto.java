@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 
@@ -98,6 +99,21 @@ public class TelevisionDto {
 
         public void setPrice(Double price) {
             this.price = price;
+        }
+
+        public LocalDate getPurchaseDate() {
+            return purchaseDate;
+        }
+
+        public void setPurchaseDate(LocalDate purchaseDate) {
+            this.purchaseDate = purchaseDate;
+        }
+
+        public LocalDate getSaleDate() {
+            return saleDate;
+        }
+        public void setSaleDate (LocalDate saleDate) {
+            this.saleDate = saleDate;
         }
 
         public Double getAvailableSize() {

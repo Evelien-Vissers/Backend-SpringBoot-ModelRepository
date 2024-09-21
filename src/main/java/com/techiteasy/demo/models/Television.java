@@ -118,7 +118,7 @@ public class Television {
         return saleDate;
     }
 
-    public void setSaleDate() {
+    public void setSaleDate(LocalDate saleDate) {
         this.saleDate = saleDate;
     }
 
