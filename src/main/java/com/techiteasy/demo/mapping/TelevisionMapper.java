@@ -1,6 +1,7 @@
 package com.techiteasy.demo.mapping;
 
 import com.techiteasy.demo.dto.TelevisionInputDto;
+import com.techiteasy.demo.dto.TelevisionSalesDto;
 import com.techiteasy.demo.models.Television;
 import com.techiteasy.demo.dto.TelevisionDto;
 
@@ -59,6 +60,16 @@ public class TelevisionMapper {
         television.setSold(dto.getSold());
 
         return television;
+    }
+
+    //Deze methode zet een 'Television'-object om naar een 'TelevisionSalesDto'
+    public static TelevisionSalesDto toTelevisionSalesDto(Television television) {
+        TelevisionSalesDto dto = new TelevisionSalesDto();
+        dto.setId(television.getId());
+        dto.setPrice(television.getPrice());
+        dto.setOriginalStock(television.getOriginalStock());
+        dto.setSold(television.getSold());
+        return dto;
     }
     }
 

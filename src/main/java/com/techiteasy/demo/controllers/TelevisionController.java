@@ -2,6 +2,7 @@ package com.techiteasy.demo.controllers;
 
 import com.techiteasy.demo.dto.TelevisionDto;
 import com.techiteasy.demo.dto.TelevisionInputDto;
+import com.techiteasy.demo.dto.TelevisionSalesDto;
 import com.techiteasy.demo.exceptions.RecordNotFoundException;
 import com.techiteasy.demo.mapping.TelevisionMapper;
 import com.techiteasy.demo.models.Television;
@@ -39,6 +40,13 @@ public class TelevisionController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
+    // GET - request voor sales info van alle Televisions (Bonus).
+    //Deze retourneert de lijst van 'TelevisionSalesDto's' naar de client.
+    @GetMapping("/sales")
+    public ResponseEntity<List<TelevisionSalesDto>> getTelevisionSalesInfo() {
+        List<TelevisionSalesDto> salesInfo = televisionService.getTelevisionSalesInfo();
+        return ResponseEntity.ok(salesInfo);
+    }
 
     // POST - request voor het aanmaken van 1 televisie
     @PostMapping

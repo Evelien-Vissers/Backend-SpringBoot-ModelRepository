@@ -1,6 +1,7 @@
 package com.techiteasy.demo.services;
 
 import com.techiteasy.demo.dto.TelevisionInputDto;
+import com.techiteasy.demo.dto.TelevisionSalesDto;
 import com.techiteasy.demo.mapping.TelevisionMapper;
 import com.techiteasy.demo.models.Television;
 import com.techiteasy.demo.repositories.TelevisionRepository;
@@ -63,5 +64,13 @@ public class TelevisionService {
             throw new EntityNotFoundException("Television with id " + id + " not found");
         }
     }
-}
+
+    //Deze methode haalt alle televisies op uit de repository, zet ze om naar 'TelevisionSalesDto' en retourneert een lijst.
+    public List<TelevisionSalesDto> getTelevisionSalesInfo() {
+            return televisionRepository.findAll().stream()
+                    .map(TelevisionMapper::toTelevisionSalesDto)
+                    .collect(Collectors.toList());
+        }
+    }
+
 
