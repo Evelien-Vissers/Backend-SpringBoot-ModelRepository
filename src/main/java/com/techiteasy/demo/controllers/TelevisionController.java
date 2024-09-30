@@ -1,5 +1,6 @@
 package com.techiteasy.demo.controllers;
 
+import com.techiteasy.demo.dto.IdInputDto;
 import com.techiteasy.demo.dto.TelevisionDto;
 import com.techiteasy.demo.dto.TelevisionInputDto;
 import com.techiteasy.demo.dto.TelevisionSalesDto;
@@ -7,6 +8,7 @@ import com.techiteasy.demo.exceptions.RecordNotFoundException;
 import com.techiteasy.demo.mapping.TelevisionMapper;
 import com.techiteasy.demo.models.Television;
 import com.techiteasy.demo.services.TelevisionService;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -66,4 +68,23 @@ public class TelevisionController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+    // PUT - request om een Remotecontroller aan een Television te koppelen
+    @PutMapping("/{televisionId}/remotecontroller")
+    public ResponseEntity<TelevisionDto> assignRemoteControllerToTelevision(
+            @PathVariable Long televisionId,
+            @RequestBody IdInputDto remoteControllerIdInput) {
+                TelevisionDto updatedTelevision = televisionService.assignRemoteControllerToTelevision(televisionId, remoteControllerIdInput.getId());
+                return ResponseEntity.ok(updatedTelevision);
+            }
+
+    // PUT - request om een CiModule aan een Television te koppelen
+    @PutMapping("/{televisionId}/cimodule")
+    public ResponseEntity<TelevisionDto> assignCiModuleToTelevision(
+            @PathVariable Long televisionId,
+            @RequestBody IdInputDto ciModuleIdInput) {
+        TelevisionDto updatedTelevision = televisionService.assignCiModuleToTelevision(televisionId, ciModuleIdInput.getId());
+        return ResponseEntity.ok(updatedTelevision);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.techiteasy.demo.mapping;
 
+import com.techiteasy.demo.dto.RemoteControllerDto;
 import com.techiteasy.demo.dto.TelevisionInputDto;
 import com.techiteasy.demo.dto.TelevisionSalesDto;
 import com.techiteasy.demo.models.Television;
@@ -34,6 +35,12 @@ public class TelevisionMapper {
                 television.getOriginalStock(),
                 television.getSold()
         );
+
+        //Koppel RemoteControllerDto indien de Television een RemoteController heeft
+        if (television.getRemoteController() != null) {
+            RemoteControllerDto remoteControllerDto = RemoteControllerMapper.toRemoteControllerDto(television.getRemoteController());
+            dto.setRemoteController(remoteControllerDto);
+        }
 
         return dto; // Teruggeven van de volledig ingevulde TelevisionDto
     }
