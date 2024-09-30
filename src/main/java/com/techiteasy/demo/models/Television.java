@@ -38,31 +38,8 @@ public class Television {
     //Data worden opgeslagen als DATE of TIMESTAMP types in de database
     //Enums worden opgeslagen als VARCHAR of ENUM type in de database
 
-    //Default constructor - dit is handig wanneer je een object wilt aanmaken zonder onmiddellijk waarden toe te wijzen aan de velden.
-    public Television() {
 
-    }
-    //Constructor met parameters - initialiseert specifieke waarden
-    public Television(String type, String brand, String name, Double price, Double availableSize, Integer refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambilight, Integer originalStock, Integer sold) {
-        this.type = type;
-        this.brand = brand;
-        this.name = name;
-        this.price = price;
-        this.purchaseDate = purchaseDate;
-        this.saleDate = saleDate;
-        this.availableSize = availableSize;
-        this.refreshRate = refreshRate;
-        this.screenType = screenType;
-        this.screenQuality = screenQuality;
-        this.smartTv = smartTv;
-        this.wifi = wifi;
-        this.voiceControl = voiceControl;
-        this.hdr = hdr;
-        this.bluetooth = bluetooth;
-        this.ambilight = ambilight;
-        this.originalStock = originalStock;
-        this.sold = sold;
-    }
+
     //Getters en setters - de methodes die worden gebruikt om toegang te krijgen tot en het wijzigen van de waarden van de velden in een object.
     //Getters - methodes die toestaan om de waarde van een prive-veld/variabele van een object op te halen en worden gebruikt om informatie van een object te lezen zonder de waarde van het veld direct te wijzigen
     //Setters - methodes waarmee je de waarde van een prive-veld kan wijzigen en wordt gebruikt om een waarde toe te wijzen aan een veld in een object.
