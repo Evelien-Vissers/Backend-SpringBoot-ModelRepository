@@ -1,11 +1,11 @@
 package com.techiteasy.demo.models;
 //De 'models' vertegenwoordigen de data-objecten die worden opgeslagen in de database. Deze klasse kan gebruikt worden om een tabel te genereren in de database via JPA.
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.rmi.Remote;
 import java.time.LocalDate;
+import java.util.List;
 
 //@Entity markeert deze klasse als een JPA-entiteit (wat betekent dat deze overeenkomst met een tabel in de database)
 @Entity
@@ -38,11 +38,35 @@ public class Television {
     //Data worden opgeslagen als DATE of TIMESTAMP types in de database
     //Enums worden opgeslagen als VARCHAR of ENUM type in de database
 
+    //OneToOne-relatie met RemoteController
+    //De 'CascadeType.All' zorgt ervoor dat alle cascade-operaties (zoals persist, merge, remove) worden toegepast op de gekoppelde Remotecontroller wanneer er iets gebeurt met de Television.
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "remote_controller_id", referencedColumnName = "id")
+    private RemoteController remoteController;
 
+    //OneToMany-relatie met CIModule
+    @OneToMany(mappedBy = "television", cascade = CascadeType.ALL)
+    private List<CIModule> ciModules;
 
     //Getters en setters - de methodes die worden gebruikt om toegang te krijgen tot en het wijzigen van de waarden van de velden in een object.
     //Getters - methodes die toestaan om de waarde van een prive-veld/variabele van een object op te halen en worden gebruikt om informatie van een object te lezen zonder de waarde van het veld direct te wijzigen
     //Setters - methodes waarmee je de waarde van een prive-veld kan wijzigen en wordt gebruikt om een waarde toe te wijzen aan een veld in een object.
+
+    //Getters en Setters voor RemoteController, CIMOdules en WallBracket
+    public RemoteController getRemoteController() {
+        return remoteController;
+    }
+
+    public void setRemoteController(RemoteController remoteController) {
+        this.remoteController = remoteController;
+    }
+    public List<CIModule> getCiModules() {
+        return ciModules;
+    }
+
+    public void setCiModules(List<CIModule> ciModules) {
+        this.ciModules = ciModules;
+    }
 
     public long getId() {
         return id;

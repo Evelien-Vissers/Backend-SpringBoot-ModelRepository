@@ -13,9 +13,18 @@ public class RemoteController {
     private String batteryType;
     private String name;
 
+    // OneToOne-relatie met Television
     @OneToOne(mappedBy="remoteController")
     private Television television;
 
+    // Getters en Setters voor Television
+    public Television getTelevision() {
+        return television;
+    }
+
+    public void setTelevision(Television television) {
+        this.television = television;
+    }
 
 //Getters & Setters
     public Long getId() {
@@ -50,12 +59,5 @@ public class RemoteController {
         this.name = name;
     }
 
-    public Television getTelevision() {
-        return television;
-    }
-
-    public void setTelevision(Television television) {
-        this.television = television;
-    }
 }
 

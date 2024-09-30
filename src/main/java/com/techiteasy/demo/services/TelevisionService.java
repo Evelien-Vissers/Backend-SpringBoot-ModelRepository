@@ -3,7 +3,10 @@ package com.techiteasy.demo.services;
 import com.techiteasy.demo.dto.TelevisionInputDto;
 import com.techiteasy.demo.dto.TelevisionSalesDto;
 import com.techiteasy.demo.mapping.TelevisionMapper;
+import com.techiteasy.demo.models.CIModule;
+import com.techiteasy.demo.models.RemoteController;
 import com.techiteasy.demo.models.Television;
+import com.techiteasy.demo.repositories.RemoteControllerRepository;
 import com.techiteasy.demo.repositories.TelevisionRepository;
 import com.techiteasy.demo.dto.TelevisionDto;
 import jakarta.persistence.EntityNotFoundException;
@@ -18,11 +21,36 @@ import java.util.stream.Collectors;
 
 public class TelevisionService {
     private final TelevisionRepository televisionRepository;
+    private final RemoteControllerRepository remoteControllerRepository;
 
     //Connectie van Service en de Repository dmv een constructor injection:
-    public TelevisionService(TelevisionRepository televisionRepository) {
+    public TelevisionService(TelevisionRepository televisionRepository,
+            RemoteControllerRepository remoteControllerRepository) {
         this.televisionRepository = televisionRepository;
+        this.remoteControllerRepository = remoteControllerRepository;
     }
+
+    //Functie om een RemoteController aan een Television te koppelen
+    public TelevisionDto assignRemoteControllerToTelevision(Long televisionId, Long remoteControllerId) {
+
+        // Haal de Television op uit de database
+        Television television = televisionRepository.findById(televisionId)
+                .orElseThrow(() -> new EntityNotFoundException("Television with id " + televisionId + " not found"));
+
+        // Haal de RemoteController op uit de database
+        RemoteController remoteController = remoteControllerRepository.findById(remoteControllerId)
+                .orElseThrow(() -> new EntityNotFoundException("RemoteController with id " + remoteControllerId + " not found"));
+
+        // Koppel de RemoteController aan de Television
+        television.setRemoteController(remoteController);
+
+        // Sla de bijgewerkte Television op
+        Television savedTelevision = televisionRepository.save(television);
+
+        // Retourneer de bijgewerkte TelevisionDto
+        return TelevisionMapper.toTelevisionDto(savedTelevision);
+    }
+
     //Gebruik mapper:
     public TelevisionDto getTelevisionDtoById(Long id) {
         Television television = televisionRepository.findById(id)
@@ -71,6 +99,22 @@ public class TelevisionService {
                     .map(TelevisionMapper::toTelevisionSalesDto)
                     .collect(Collectors.toList());
         }
+
+    // Functie om een CiModule aan een Television te koppelen
+    public TelevisionDto assignCiModuleToTelevision(Long televisionId, Long ciModuleId) {
+        Television television = televisionRepository.findById(televisionId)
+                .orElseThrow(() -> new EntityNotFoundException("Television with id " + televisionId + " not found"));
+
+        CIModule ciModule = ciModuleRepository.findById(ciModuleId)
+                .orElseThrow(() -> new EntityNotFoundException("CiModule with id " + ciModuleId + " not found"));
+
+        ciModule.setTelevision(television);
+        ciModuleRepository.save(ciModule);
+
+        return TelevisionMapper.toTelevisionDto(television);
+    }
+
+
     }
 
 

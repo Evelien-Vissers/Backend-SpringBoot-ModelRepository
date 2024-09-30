@@ -8,6 +8,10 @@ public class RemoteControllerDto {
     private String name;
 
     // Getters and Setters
+    public void setRemoteController(RemoteControllerDto remoteControllerDto) {
+        this.remoteController = remoteController;
+    }
+
     public Long getId() {
         return id;
     }

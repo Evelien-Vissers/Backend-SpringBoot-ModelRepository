@@ -13,9 +13,18 @@ public class CIModule {
     private String type;
     private Double price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "television_id")
     private Television television;
+
+    // Getters and Setters voor Television
+    public Television getTelevision() {
+        return television;
+    }
+
+    public void setTelevision(Television television) {
+        this.television = television;
+    }
 
     // Getters and Setters
     public Long getId() {
@@ -50,11 +59,4 @@ public class CIModule {
         this.price = price;
     }
 
-    public Television getTelevision() {
-        return television;
-    }
-
-    public void setTelevision(Television television) {
-        this.television = television;
-    }
 }
